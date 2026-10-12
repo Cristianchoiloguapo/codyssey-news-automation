@@ -8,7 +8,7 @@ RSS에서 AI 관련 뉴스를 읽고, 본문을 추출한 후 OpenAI로 **3줄 �
 
 - Python 3.11, VS Code
 - feedparser(RSS), requests + trafilatura(본문 추출)
-- OpenAI API (Responses API, `gpt-4.1-mini`)
+- OpenAI API (코디세이 API, `gpt-5-mini`)
 - Notion API (버전 `2025-09-03`)
 - GitHub Actions (매일 09:07 Asia/Seoul 스케줄 + 수동 실행)
 
