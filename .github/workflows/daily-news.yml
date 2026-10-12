@@ -1,0 +1,35 @@
+name: Daily AI News to Notion
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 매일 한국 시간 09:07. GitHub Actions 실행 시작은 지연될 수 있음.
+    - cron: '7 9 * * *'
+      timezone: 'Asia/Seoul'
+
+permissions:
+  contents: read
+
+jobs:
+  summarize-and-save:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      - name: Execute RSS to Notion pipeline
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATA_SOURCE_ID: ${{ secrets.NOTION_DATA_SOURCE_ID }}
+          OPENAI_MODEL: gpt-4.1-mini
+          RSS_FEEDS: https://techcrunch.com/category/artificial-intelligence/feed/
+          TOPIC_KEYWORDS: AI,OpenAI,ChatGPT,LLM,artificial intelligence,generative AI,machine learning
+        run: python news_summary.py --run
