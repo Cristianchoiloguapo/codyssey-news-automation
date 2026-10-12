@@ -2,7 +2,7 @@
 
 RSS에서 AI 관련 뉴스를 읽고, 본문을 추출한 후 OpenAI로 **3줄 이내 요약**하여 Notion에 매일 자동 저장하는 팀 프로젝트입니다.
 
-**상태:** 기본 구현 준비 완료 / 실서비스 API 연결 및 실측 결과 입력 필요. 실제 테스트 전까지 완료했다고 주장하지 않습니다.
+**상태:** RSS 뉴스 수집, 코디세이 AI 요약, Notion 자동 저장 및 GitHub Actions 수동 실행 테스트 성공. 매일 오전 9시 7분 자동 실행 설정 완료(예약 실행 검증 전). 최종 제출 자료 정리 중.
 
 ## 1. 개발 도구
 
@@ -55,7 +55,8 @@ python news_summary.py --run
 python -m unittest discover -s tests -v
 ```
 
-`--run` 명령은 실제 OpenAI API 비용이 발생할 수 있으며, 조건이 맞는 뉴스 1건을 Notion에 저장합니다.
+`--run` 실행 시 코디세이 API 사용량이 차감될 수 있으며,
+조건에 맞는 뉴스 1건을 Notion에 저장합니다.
 
 ## 5. 자동 실행 설정
 
@@ -76,8 +77,8 @@ python -m unittest discover -s tests -v
 - [ ] `docs/evidence/`에 GitHub Actions 성공 실행 내역 스크린샷 추가
 - [ ] `docs/evidence/`에 Notion DB 저장 결과 스크린샷 추가
 - [ ] `docs/evidence/`에 자동화 구조/설정 스크린샷 추가
-- [ ] 실제 노션 DB 링크: [입력]
-- [ ] 성공 실행 링크: [입력]
+- 실제 노션 DB 링크: [코디세이 AI 뉴스 요약 자동화](https://app.notion.com/p/AI-3f70685c320d80af94fbe38ae8ab28c7)
+- 성공 실행 링크: [GitHub Actions 실행 성공 기록](https://github.com/Cristianchoiloguapo/codyssey-news-automation/actions/runs/38231237770)
 - 팀원 역할 및 오류처리: [`docs/WORK_LOG_TEMPLATE.md`](docs/WORK_LOG_TEMPLATE.md)
 - 체크리스트: [`docs/SUBMISSION_CHECKLIST.md`](docs/SUBMISSION_CHECKLIST.md)
 
@@ -89,4 +90,4 @@ python -m unittest discover -s tests -v
 
 - GitHub Actions Schedule: https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
 - Notion Query Data Source: https://developers.notion.com/reference/query-a-data-source
-- OpenAI Responses API: https://developers.openai.com/api/reference/python/resources/responses/methods/create
+- 코디세이 AI API: https://usr.codyssey.kr/gyeongnam/public-api-console
