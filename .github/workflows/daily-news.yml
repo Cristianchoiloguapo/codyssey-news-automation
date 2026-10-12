@@ -29,7 +29,8 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATA_SOURCE_ID: ${{ secrets.NOTION_DATA_SOURCE_ID }}
-          OPENAI_MODEL: gpt-4.1-mini
+          OPENAI_MODEL: gpt-5-mini
+          OPENAI_BASE_URL: https://copa.codyssey.kr/v1
           RSS_FEEDS: https://techcrunch.com/category/artificial-intelligence/feed/
           TOPIC_KEYWORDS: AI,OpenAI,ChatGPT,LLM,artificial intelligence,generative AI,machine learning
         run: python news_summary.py --run
